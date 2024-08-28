@@ -4,7 +4,6 @@ export default function Answers({answers, selectedAnswer, ansState, onSelect}) {
 
   const shuffledAnswers = useRef();
 
-
   if (!shuffledAnswers.current) {
     shuffledAnswers.current = [...answers];
     shuffledAnswers.current.sort(() => Math.random() - 0.5);
@@ -23,9 +22,8 @@ export default function Answers({answers, selectedAnswer, ansState, onSelect}) {
         classes = ansState;
       }
 
-
       return <li key={answer} className="answer">
-        <button onClick={() => onSelect(answer)} className={classes}>{answer}</button>
+        <button onClick={() => onSelect(answer)} className={classes} disabled={ansState !== ''}>{answer}</button>
       </li>
     })}
   </ul>
